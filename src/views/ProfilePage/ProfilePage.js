@@ -62,7 +62,7 @@ export default function ProfilePage(props) {
   // );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
 
-  const [showInitialDisplay, setShowInitialDisplay] = useState(true)
+  const [showInitialDisplay, setShowInitialDisplay] = useState(false)
 
   const [phoneNumber, setPhoneNumber] = useState('')
   const [errorPhone, setErrorPhone] = useState('')
@@ -211,7 +211,7 @@ export default function ProfilePage(props) {
             <option value="+91">India(+91)</option>
             <option value="+968">Oman(+968)</option>
           </TextField>
-          <TextField onChange={handlePhoneNumber} id="standard-basic" label="Mobile Number" type="number" /><br />
+          <TextField className={classes.inputbox} onChange={handlePhoneNumber} id="standard-basic" label="Mobile Number" type="number" /><br />
           {errorPhone ? (<div>{errorPhone}</div>) : ''}
         </div>
         <div style={{ width: '100%' }}>
@@ -244,38 +244,37 @@ export default function ProfilePage(props) {
           </TextField>
         </div>
         <FormControl component="fieldset">
-          <FormLabel component="legend">Gender</FormLabel>
-          <RadioGroup aria-label="gender" name="gender1">
+          <FormLabel component="gender">Gender</FormLabel>
+          <RadioGroup aria-label="gender" name="gender1" style={{flexDirection: 'row'}}>
             <FormControlLabel value="female" control={<Radio onClick={() => genderuncheck('male')} />} label="Male" />
-            <FormControlLabel value="male" control={<Radio onClick={() => genderuncheck('female')} />} label="Female" />
+            <FormControlLabel className={classes.radiobox} value="male" control={<Radio onClick={() => genderuncheck('female')} />} label="Female" />
           </RadioGroup>
         </FormControl><br />
         {errgendercheck}<br/>
         <FormControl component="fieldset">
           <FormLabel component="legend">Status</FormLabel>
-          <RadioGroup aria-label="status" name="status1">
-            <FormControlLabel value="Single" control={<Radio onClick={() => marriaguncheck('single')} />} label="Single" />
-            <FormControlLabel value="Married" control={<Radio onClick={() => marriaguncheck('Married')} />} label="Married" />
+          <RadioGroup aria-label="status" name="status1" style={{flexDirection: 'row'}}>
+            <FormControlLabel value="Single" control={<Radio className={classes.radiobox} onClick={() => marriaguncheck('single')} />} label="Single" />
+            <FormControlLabel value="Married" control={<Radio className={classes.radiobox} onClick={() => marriaguncheck('Married')} />} label="Married" />
           </RadioGroup>
         </FormControl><br />
         {errmarriagecheck}<br/>
-        <TextField onChange={handleName} id="standard-basic" label="Nick Name" /><br />
+        <TextField className={classes.inputbox} onChange={handleName} id="standard-basic" label="Nick Name" /><br />
          {errorName ? (<div>{errorName}</div>) : ''}
-       <input
-          accept="image/*"
-          className={classes.input}
-          id="contained-button-file"
-          multiple
-          type="file"
-        />
+        <input
+           accept="image/*"
+           className={classes.input}
+           id="contained-button-file"
+           multiple
+           type="file"
+         />        
         <label htmlFor="contained-button-file">
           <Button variant="contained" color="secondary" component="span">
             Brows
         </Button>
         </label>
-        <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
         <label htmlFor="icon-button-file"><br />
-          <img src="" alt="" />
+          <img src="" alt="img will display here" />
           <Button variant="contained" color="secondary" component="span">
             Upload
         </Button>
@@ -337,17 +336,17 @@ export default function ProfilePage(props) {
           {errcontry}
           <li>Discipline you wish to</li>
             university<br />
-          <RadioGroup aria-label="university">
-            <FormControlLabel value="Under Graduate" control={<Radio onClick={() => setDiscipline('Under Graduate')} />} label="Under Graduate" />
-            <FormControlLabel value="Graduate" control={<Radio onClick={() => setDiscipline('Graduate')} />} label="Graduate" />
-            <FormControlLabel value="Doctral" control={<Radio onClick={() => setDiscipline('Doctral')} />} label="Doctral" />
+          <RadioGroup style={{flexDirection: 'row'}} aria-label="university">
+            <FormControlLabel value="Under Graduate" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Under Graduate')} />} label="Under Graduate" />
+            <FormControlLabel value="Graduate" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Graduate')} />} label="Graduate" />
+            <FormControlLabel value="Doctral" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Doctral')} />} label="Doctral" />
           </RadioGroup>
           <br />
           {errDiscipline}
             pre-collage<br />
-          <RadioGroup aria-label="precollage">
-            <FormControlLabel value="Diploma" control={<Radio onClick={() => setDiscipline('Diploma')} />} label="Diploma" />
-            <FormControlLabel value="Advanced" control={<Radio onClick={() => setDiscipline('Advanced')} />} label="Advanced" />
+          <RadioGroup style={{flexDirection: 'row'}} aria-label="precollage">
+            <FormControlLabel value="Diploma" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Diploma')} />} label="Diploma" />
+            <FormControlLabel value="Advanced" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Advanced')} />} label="Advanced" />
           </RadioGroup><br/>
           {errprecollage}
           <li>Program you wish to</li>
@@ -411,13 +410,13 @@ export default function ProfilePage(props) {
           /><br/>
           {errIntaken}
           <li>Your Academia</li>
-          <TextField onChange={handleSchoolname} id="standard-basic" label="School/College" /><br />
+          <TextField className={classes.inputbox} onChange={handleSchoolname} id="standard-basic" label="School/College" /><br />
           {errorschool ? (<div>{errorschool}</div>) : ''}
-          <TextField onChange={handleCourse} id="standard-basic" label="Course Studied" /><br />
+          <TextField className={classes.inputbox} onChange={handleCourse} id="standard-basic" label="Course Studied" /><br />
           {errorcourse ? (<div>{errorcourse}</div>) : ''}
-          <TextField onChange={handleScores} id="standard-basic" label="Scores" /><br />
+          <TextField className={classes.inputbox} onChange={handleScores} id="standard-basic" label="Scores" /><br />
           {errorscores ? (<div>{errorscores}</div>) : ''}
-          <TextField onChange={handleBacklogs} type="number" id="standard-basic" label="Backlogs" /><br />
+          <TextField className={classes.inputbox} onChange={handleBacklogs} type="number" id="standard-basic" label="Backlogs" /><br />
           {errorBacklogs ? (<div>{errorBacklogs}</div>) : ''}
         </ol>
         <Button variant="contained" color="secondary" component="span" onClick={onSubmit}>
