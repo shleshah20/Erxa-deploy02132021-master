@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Button, IconButton, Input, TextField, InputLabel, NativeSelect, RadioGroup, FormControlLabel, Radio, FormControl, FormLabel, Checkbox } from '@material-ui/core';
-import classNames from "classnames";
+import { Button, TextField, RadioGroup, FormControlLabel, Radio, Checkbox } from '@material-ui/core';
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(styles);
 
-export default function Form2(){
+export default function Form2() {
   const classes = useStyles();
   const [school, setschool] = useState('')
   const [errorschool, setErrorschool] = useState('')
@@ -15,29 +14,29 @@ export default function Form2(){
   const [errorscores, setErrorscores] = useState('')
 
   const [course, setcourse] = useState('')
-  const [errorcourse, setErrorcourse] = useState('') 
+  const [errorcourse, setErrorcourse] = useState('')
 
   const [Backlogs, setsBacklogs] = useState('')
   const [errorBacklogs, setErrorBacklogs] = useState('')
 
-  const [contry,setcontry]=useState(false)
-  const [errcontry,errsetcontry]=useState('')
+  const [contry, setcontry] = useState(false)
+  const [errcontry, errsetcontry] = useState('')
 
-  const [Program,setProgram]=useState(false)
-  const [errProgram,errsetProgram]=useState('')
+  const [Program, setProgram] = useState(false)
+  const [errProgram, errsetProgram] = useState('')
 
-  const [Discipline,setDiscipline]=useState(false)
-  const [errDiscipline,errsetDiscipline]=useState('')
+  const [Discipline, setDiscipline] = useState(false)
+  const [errDiscipline, errsetDiscipline] = useState('')
 
-  const [precollage,setprecollage]=useState(false)
-  const [errprecollage,errsetprecollage]=useState('')
+  const [precollage] = useState(false)
+  const [errprecollage, errsetprecollage] = useState('')
 
-  const [Intaken,setIntaken]=useState(false)
-  const [errIntaken,errsetIntaken]=useState('') 
+  const [Intaken, setIntaken] = useState(false)
+  const [errIntaken, errsetIntaken] = useState('')
 
   const handleSchoolname = e => {
     setschool(e.target.value)
-    if(!/[A-za-z0-9]{2,255}/.test(school))
+    if (!/[A-za-z0-9]{2,255}/.test(school))
       setErrorschool("Please enter valid school/College name")
     else
       setErrorschool(" ")
@@ -45,15 +44,15 @@ export default function Form2(){
 
   const handleCourse = e => {
     setcourse(e.target.value)
-    if(!/[A-za-z0-9]{2,255}/.test(course))
-     setErrorcourse("Please enter valid Course name")
+    if (!/[A-za-z0-9]{2,255}/.test(course))
+      setErrorcourse("Please enter valid Course name")
     else
       setErrorcourse(" ")
   }
 
   const handleScores = e => {
     setscores(e.target.value)
-    if(!/[0-9]{1}[.][0-9]{2,5}/.test(Scores))
+    if (!/[0-9]{1}[.][0-9]{2,5}/.test(Scores))
       setErrorscores("Please enter valid SGPA name")
     else
       setErrorscores(" ")
@@ -61,62 +60,62 @@ export default function Form2(){
 
   const handleBacklogs = e => {
     setsBacklogs(e.target.value)
-    if(!/[0-9]{0,2}/.test(Backlogs))
+    if (!/[0-9]{0,2}/.test(Backlogs))
       setErrorBacklogs("Please enter valid Backlogs name")
     else
       setErrorBacklogs(" ")
   }
 
-  const onSubmit =() =>{
+  const onSubmit = () => {
 
-    if(Intaken === false){
+    if (Intaken === false) {
       errsetIntaken("please select intaken year")
       return false
     }
-      
-    if(precollage === false){
+
+    if (precollage === false) {
       errsetprecollage("please select any pre-collage")
       return false
     }
 
-    if(Discipline === false){
+    if (Discipline === false) {
       errsetDiscipline("please select any Discipline")
       return false
     }
 
-    if(contry === false){
+    if (contry === false) {
       errsetcontry("please select any contry")
       return false
     }
 
-    if(Program === false){
+    if (Program === false) {
       errsetProgram("please select any Program")
       return false
     }
 
-    if(!/[0-9]{1}[.][0-9]{2}/.test(Scores)){
+    if (!/[0-9]{1}[.][0-9]{2}/.test(Scores)) {
       setErrorscores("Please enter valid SGPA name")
       return false
     }
 
-    if(!/[0-9]{1,2}/.test(Backlogs)){
+    if (!/[0-9]{1,2}/.test(Backlogs)) {
       setErrorBacklogs("Please enter valid Backlogs name")
       return false
     }
 
-    if(!/[A-za-z0-9]{2,255}/.test(course)){
+    if (!/[A-za-z0-9]{2,255}/.test(course)) {
       setErrorcourse("Please enter valid Course name")
       return false
     }
 
-     if(!/[A-za-z0-9]{2,255}/.test(school)){
+    if (!/[A-za-z0-9]{2,255}/.test(school)) {
       setErrorschool("Please enter valid school/College name")
       return false
     }
     return true
   }
-  const show = s =>(
-      <div>
+  const show = () => (
+    <div>
       <h3 style={{ color: "#f50057" }}>My Aspirations</h3>
       <h6 style={{ color: "#000" }}>Tell us more about yourself, set your preferences and answer some <br />quetions about study abroad aspirations.</h6>
       <ol>
@@ -161,11 +160,11 @@ export default function Form2(){
           control={<Checkbox onClick={() => setcontry('Singapore')} />}
           label="Singapore"
         />
-        <br/>
+        <br />
         {errcontry}
         <li>Discipline you wish to</li>
           university<br />
-        <RadioGroup style={{flexDirection: 'row'}} aria-label="university">
+        <RadioGroup style={{ flexDirection: 'row' }} aria-label="university">
           <FormControlLabel value="Under Graduate" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Under Graduate')} />} label="Under Graduate" />
           <FormControlLabel value="Graduate" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Graduate')} />} label="Graduate" />
           <FormControlLabel value="Doctral" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Doctral')} />} label="Doctral" />
@@ -173,10 +172,10 @@ export default function Form2(){
         <br />
         {errDiscipline}
           pre-collage<br />
-        <RadioGroup style={{flexDirection: 'row'}} aria-label="precollage">
+        <RadioGroup style={{ flexDirection: 'row' }} aria-label="precollage">
           <FormControlLabel value="Diploma" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Diploma')} />} label="Diploma" />
           <FormControlLabel value="Advanced" control={<Radio className={classes.radiobox} onClick={() => setDiscipline('Advanced')} />} label="Advanced" />
-        </RadioGroup><br/>
+        </RadioGroup><br />
         {errprecollage}
         <li>Program you wish to</li>
         <FormControlLabel
@@ -218,7 +217,7 @@ export default function Form2(){
         <FormControlLabel
           control={<Checkbox onClick={() => setProgram('Medicine')} />}
           label="Medicine"
-        /><br/>
+        /><br />
         {errProgram}
         <li>Intaken planened?</li>
         <FormControlLabel
@@ -236,7 +235,7 @@ export default function Form2(){
         <FormControlLabel
           control={<Checkbox onClick={() => setIntaken('2024')} />}
           label="2024"
-        /><br/>
+        /><br />
         {errIntaken}
         <li>Your Academia</li>
         <TextField className={classes.inputbox} onChange={handleSchoolname} id="standard-basic" label="School/College" /><br />
@@ -249,13 +248,13 @@ export default function Form2(){
         {errorBacklogs ? (<div>{errorBacklogs}</div>) : ''}
       </ol>
       <Button variant="contained" color="secondary" component="span" onClick={onSubmit}>
-      complete profile
+        complete profile
       </Button>
     </div>
-    )
-    return (
-      <div>
-       {show()}
-      </div>
-    )
+  )
+  return (
+    <div>
+      {show()}
+    </div>
+  )
 }

@@ -20,7 +20,8 @@
     "react-scripts": "3.4.1",
     "react-slick": "0.26.1",
     "react-swipeable-views": "0.13.9",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "typescript": "3.9.3"
   },
   "devDependencies": {
     "@babel/cli": "7.10.1",
